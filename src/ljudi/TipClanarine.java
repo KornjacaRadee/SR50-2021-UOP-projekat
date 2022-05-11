@@ -1,22 +1,22 @@
 package ljudi;
 
 public class TipClanarine {
-	private int id;
+	private String id;
 	private String naziv;
 	private double cena;
 	public TipClanarine() {
 		super();
 	}
-	public TipClanarine(int id, String naziv, double cena) {
+	public TipClanarine(String id, String naziv, double cena) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
 		this.cena = cena;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getNaziv() {

@@ -1,7 +1,7 @@
 package knjige;
 
 public class Knjiga {
-	private int id;
+	private String id;
 	private String naslov;
 	private String orgNaslov;
 	private String pisac;
@@ -12,7 +12,7 @@ public class Knjiga {
 	public Knjiga() {
 		super();
 	}
-	public Knjiga(int id, String naslov, String orgNaslov, String pisac, int godinaIzdavanja, String jezik, String opis,
+	public Knjiga(String id, String naslov, String orgNaslov, String pisac, int godinaIzdavanja, String jezik, String opis,
 			ZanrKnjige zanr) {
 		super();
 		this.id = id;
@@ -24,10 +24,10 @@ public class Knjiga {
 		this.opis = opis;
 		this.zanr = zanr;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getNaslov() {

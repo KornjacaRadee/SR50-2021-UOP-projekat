@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 
 import knjige.Biblioteka;
+import knjige.Knjiga;
 import ljudi.Admin;
 import ljudi.Bibliotekar;
 import ljudi.Pol;
@@ -11,9 +12,9 @@ public class Main {
 
     public static void main(String[] args) {
         Biblioteka biblioteka = new Biblioteka();
-        biblioteka.ucitajAdmine();
-        for(Admin admin : biblioteka.getAdmini()) {
-            System.out.println(admin.getKorisnickoIme());	
+        biblioteka.ucitajKnjige();
+        for(Knjiga knjiga : biblioteka.getKnjiga()) {
+            System.out.println(knjiga.getOpis());
 
         }
         Admin admin = new Admin(002, "ALEKSANDAR", "DOKTORIRAOJAVU", "12313212312312", "BULEVAR JAVE", Pol.valueOf("MUSKI"), "RADI", "MOLIMTE", 9999999.00);

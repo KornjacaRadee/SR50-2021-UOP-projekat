@@ -154,9 +154,9 @@ public class Biblioteka {
 	public void setKnjiga(ArrayList<Knjiga> knjiga) {
 		this.knjiga = knjiga;
 	}
+	
 
-
-	public void ucitajKorisnike() {
+	public void ucitajClanove() {
         try {
             File korisniciFile = new File("src/fajlovi/clanovi.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
@@ -170,13 +170,13 @@ public class Biblioteka {
                 String jmbg = lineSplit[4];
                 Pol pol = Pol.valueOf(lineSplit[5]);
                 String brojClanskeKarte = lineSplit[6];
-                //TipClanarine tipClanarine = this.funkcija//
-                LocalDate datumUplate = LocalDate.parse(lineSplit[7]);
-                int brojMeseci = Integer.parseInt(lineSplit[8]);
-                boolean aktivnost = Boolean.parseBoolean(lineSplit[9]);
+                TipClanarine tipClanarine = this.nadjiTip(lineSplit[7]);
+                LocalDate datumUplate = LocalDate.parse(lineSplit[8]);
+                int brojMeseci = Integer.parseInt(lineSplit[9]);
+                boolean aktivnost = Boolean.parseBoolean(lineSplit[10]);
                 
                 
-                Clan clan = new Clan(id,ime, prezime, adresa, jmbg, pol,brojClanskeKarte,datumUplate,brojMeseci,aktivnost);
+                Clan clan = new Clan(id,ime, prezime, adresa, jmbg, pol,brojClanskeKarte,tipClanarine,datumUplate,brojMeseci,aktivnost);
                 this.clanovi.add(clan);
             }
         } catch (IOException e) {
@@ -240,14 +240,14 @@ public class Biblioteka {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] lineSplit = line.split("\\|");
-                int id = Integer.parseInt(lineSplit[0]);
+                String id = lineSplit[0];
                 String naslov = lineSplit[1];
                 String orgNaslov = lineSplit[2];
                 String pisac = lineSplit[3];
-                String godinaIzdavanja = lineSplit[4];
+                int godinaIzdavanja = Integer.parseInt(lineSplit[4]);
                 String jezik = lineSplit[5];
                 String opis = lineSplit[6];
-               // ZanrKnjige zanr = ZanrKnjige.valueOf(lineSplit[5]);
+                ZanrKnjige zanr = this.nadjiZanr(lineSplit[7]);
                 
                 
                 Knjiga knjiga  = new Knjiga(id,naslov,orgNaslov,pisac,godinaIzdavanja,jezik,opis,zanr);
@@ -257,6 +257,35 @@ public class Biblioteka {
             System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
         }
     }
+	public ZanrKnjige nadjiZanr(String id) {
+        ZanrKnjige trazeni = null;
+        for(int i = 0; i < this.zanrovi.size(); i++) {
+            if (this.zanrovi.get(i).getOznaka() == id) {
+                trazeni = this.zanrovi.get(i);
+            }
+        }
+        return trazeni;
+        }
+	public Knjiga nadjiKnjigu(String id) {
+        Knjiga trazeni = null;
+        for(int i = 0; i < this.knjiga.size(); i++) {
+            if (this.knjiga.get(i).getId() == id) {
+                trazeni = this.knjiga.get(i);
+            }
+        }
+        return trazeni;
+        }
+	public TipClanarine nadjiTip(String id) {
+        TipClanarine trazeni = null;
+        for(int i = 0; i < this.tipClanarine.size(); i++) {
+            if (this.tipClanarine.get(i).getId() == id) {
+                trazeni = this.tipClanarine.get(i);
+            }
+        }
+        return trazeni;
+        }
+	
+	
 	public void ucitajPrimerakKnjige() {
         try {
             File korisniciFile = new File("src/fajlovi/knjige.txt");
@@ -264,7 +293,7 @@ public class Biblioteka {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] lineSplit = line.split("\\|");
-               // Knjiga knjiga = lineSplit[0];
+                Knjiga knjiga = this.nadjiKnjigu(lineSplit[1]);
                 int brojStrana = Integer.parseInt(lineSplit[1]);
                 Povez povez = Povez.valueOf(lineSplit[2]);;
                 int godinaStampanja = Integer.parseInt(lineSplit[3]);
@@ -307,6 +336,7 @@ public class Biblioteka {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
 			writer.write(sadrzaj);
 			writer.close();
+			System.out.println("test");
 		}catch(IOException e){
 			System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
 		}

@@ -23,5 +23,6 @@ public class ZanrKnjige {
 	public void setOpis(String opis) {
 		this.opis = opis;
 	}
+
 	
 }
