@@ -156,6 +156,16 @@ public class Biblioteka {
 	}
 	
 
+	public ArrayList<ZanrKnjige> getZanrovi() {
+		return zanrovi;
+	}
+
+
+	public void setZanrovi(ArrayList<ZanrKnjige> zanrovi) {
+		this.zanrovi = zanrovi;
+	}
+
+
 	public void ucitajClanove() {
         try {
             File korisniciFile = new File("src/fajlovi/clanovi.txt");
@@ -183,6 +193,38 @@ public class Biblioteka {
             System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
         }
     }
+	public void ucitajZanrove() {
+        try {
+            File korisniciFile = new File("src/fajlovi/zanrovi.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] lineSplit = line.split("\\|");
+                String oznaka = lineSplit[0];
+                String opis = lineSplit[1]; 
+                ZanrKnjige zanr = new ZanrKnjige(oznaka,opis);
+                this.zanrovi.add(zanr);
+            }
+        } catch (IOException e) {
+            System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
+        }
+    }
+	public void snimiZanr() {
+		String sadrzaj = "";
+		for (ZanrKnjige zanr: this.zanrovi) {
+			sadrzaj += zanr.getOznaka() +"|"+ zanr.getOpis() + "\n";
+		}
+		try {
+			File korisniciFile = new File("src/fajlovi/zanrovi.txt");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
+			writer.write(sadrzaj);
+			writer.close();
+		}catch(IOException e){
+			System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
+		}
+	}
+	
+	
 	public void ucitajAdmine() {
         try {
             File korisniciFile = new File("src/fajlovi/admini.txt");
