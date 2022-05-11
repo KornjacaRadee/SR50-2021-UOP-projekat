@@ -7,7 +7,7 @@ public abstract class Zaposleni extends Osoba {
 	public Zaposleni() {
 		super();
 	}
-	public Zaposleni(int id, String ime, String prezime, String adresa, String jMBG, Pol polovi, String korisnickoIme,
+	public Zaposleni(String id, String ime, String prezime, String adresa, String jMBG, Pol polovi, String korisnickoIme,
 			String korisnickaSifra, double plata) {
 		super(id, ime, prezime, adresa, jMBG, polovi);
 		this.korisnickoIme = korisnickoIme;

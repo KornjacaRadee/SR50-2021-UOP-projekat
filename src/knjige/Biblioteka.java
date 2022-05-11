@@ -163,7 +163,7 @@ public class Biblioteka {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] lineSplit = line.split("\\|");
-                int id = Integer.parseInt(lineSplit[0]);
+                String id = lineSplit[0];
                 String ime = lineSplit[1];
                 String prezime = lineSplit[2];
                 String adresa = lineSplit[3];
@@ -190,7 +190,7 @@ public class Biblioteka {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] lineSplit = line.split("\\|");
-                int id = Integer.parseInt(lineSplit[0]);
+                String id = lineSplit[0];
                 String ime = lineSplit[1];
                 String prezime = lineSplit[2];
                 String adresa = lineSplit[3];
@@ -215,7 +215,7 @@ public class Biblioteka {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] lineSplit = line.split("\\|");
-                int id = Integer.parseInt(lineSplit[0]);
+                String id = lineSplit[0];
                 String ime = lineSplit[1];
                 String prezime = lineSplit[2];
                 String adresa = lineSplit[3];
@@ -313,7 +313,7 @@ public class Biblioteka {
 		String sadrzaj = "";
 		for (Clan clan: this.clanovi) {
 			sadrzaj += clan.getId() + "|" + clan.getIme() + "|" + clan.getPrezime() + "|" + clan.getAdresa() + 
-					"|" + clan.getJMBG() + clan.getPolovi() + "|" + clan.getBrojClanskeKarte() + "|" + clan.getTip() + "|"+ clan.getDatumUplate() + "|"+ clan.getBrojMeseci() + "|"+ clan.isAktivnost() + "\n";
+					"|" + clan.getJMBG() +"|" + clan.getPolovi() + "|" + clan.getBrojClanskeKarte() + "|" + clan.getTip() + "|"+ clan.getDatumUplate() + "|"+ clan.getBrojMeseci() + "|"+ clan.isAktivnost() + "\n";
 		}
 		try {
 			File korisniciFile = new File("src/fajlovi/clanovi.txt");
@@ -329,7 +329,7 @@ public class Biblioteka {
 		String sadrzaj = "";
 		for (Admin admin: this.admini) {
 			sadrzaj += admin.getId() + "|" + admin.getIme() + "|" + admin.getPrezime() + "|" + admin.getAdresa() + 
-					"|" + admin.getJMBG() + admin.getPolovi() + "|" + admin.getKorisnickoIme() + "|" + admin.getKorisnickaSifra() + "|"+ admin.getPlata() + "\n";
+					"|" + admin.getJMBG() +"|"+ admin.getPolovi() + "|" + admin.getKorisnickoIme() + "|" + admin.getKorisnickaSifra() + "|"+ admin.getPlata() + "\n";
 		}
 		try {
 			File korisniciFile = new File("src/fajlovi/admini.txt");
@@ -345,7 +345,7 @@ public class Biblioteka {
 		String sadrzaj = "";
 		for (Bibliotekar bibliotekar: this.bibliotekari) {
 			sadrzaj += bibliotekar.getId() + "|" + bibliotekar.getIme() + "|" + bibliotekar.getPrezime() + "|" + bibliotekar.getAdresa() + 
-					"|" + bibliotekar.getJMBG() + bibliotekar.getPolovi() + "|" + bibliotekar.getKorisnickoIme() + "|" + bibliotekar.getKorisnickaSifra() + "|"+ bibliotekar.getPlata() + "\n";
+					"|" + bibliotekar.getJMBG()+ "|"+ bibliotekar.getPolovi() + "|" + bibliotekar.getKorisnickoIme() + "|" + bibliotekar.getKorisnickaSifra() + "|"+ bibliotekar.getPlata() + "\n";
 		}
 		try {
 			File korisniciFile = new File("src/fajlovi/bibliotekari.txt");

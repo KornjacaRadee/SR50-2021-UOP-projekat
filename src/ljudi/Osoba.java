@@ -1,7 +1,7 @@
 package ljudi;
 
 public abstract class Osoba {
-	private int id;
+	private String id;
 	private String ime;
 	private String prezime;
 	private String adresa;
@@ -10,7 +10,7 @@ public abstract class Osoba {
 	public Osoba() {
 		super();
 	}
-	public Osoba(int id, String ime, String prezime, String adresa, String jMBG, Pol polovi) {
+	public Osoba(String id, String ime, String prezime, String adresa, String jMBG, Pol polovi) {
 		super();
 		this.id = id;
 		this.ime = ime;
@@ -19,10 +19,10 @@ public abstract class Osoba {
 		JMBG = jMBG;
 		this.polovi = polovi;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getIme() {
