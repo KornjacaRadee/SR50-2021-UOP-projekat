@@ -1,1 +1,1 @@
-002|Milorad|Djurica|Bulevar|1231231231|MUSKI|sIFRA|ljudi.TipClanarine@3b22cdd0|2020-01-08|13|true
+002|Milorad|Djurica|Bulevar|1231231231|MUSKI|sIFRA|ljudi.TipClanarine@65ae6ba4|2020-01-08|13|true

@@ -275,6 +275,39 @@ public class Biblioteka {
             System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
         }
     }
+	public void ucitajTipClanarine() {
+        try {
+            File korisniciFile = new File("src/fajlovi/tipClan.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] lineSplit = line.split("\\|");
+                String id = lineSplit[0];
+                String naziv = lineSplit[1];
+                double cena = Double.parseDouble(lineSplit[2]);
+  
+                TipClanarine tip  = new TipClanarine(id,naziv,cena);
+                this.tipClanarine.add(tip);
+            }
+        } catch (IOException e) {
+            System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
+        }
+    }
+	public void snimiTipClanarine() {
+		String sadrzaj = "";
+		for (TipClanarine tip: this.tipClanarine) {
+			sadrzaj += tip.getId() + "|" + tip.getNaziv() + "|" + tip.getCena()+ "|"+ "\n";
+		}
+		try {
+			File korisniciFile = new File("src/fajlovi/tipClan.txt");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
+			writer.write(sadrzaj);
+			writer.close();
+		}catch(IOException e){
+			System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
+		}
+	}
+	
 	public void ucitajKnjige() {
         try {
             File korisniciFile = new File("src/fajlovi/knjige.txt");
@@ -330,7 +363,7 @@ public class Biblioteka {
 	
 	public void ucitajPrimerakKnjige() {
         try {
-            File korisniciFile = new File("src/fajlovi/knjige.txt");
+            File korisniciFile = new File("src/fajlovi/primerci.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
