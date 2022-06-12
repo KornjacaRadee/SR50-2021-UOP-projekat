@@ -62,30 +62,84 @@ public class Mainwindow extends JFrame {
 		panel.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("ADMINI");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(getTitle().equals("Admin panel")) {
+					Adminiwindow frame = new Adminiwindow();
+					frame.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "Nemate dozvolu");
+				};
+				
+			}
+		});
 		btnNewButton.setBounds(86, 149, 126, 76);
 		panel.add(btnNewButton);
 		
 		JButton btnBibliotekari = new JButton("BIBLIOTEKARI");
+		btnBibliotekari.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(getTitle().equals("Admin panel")) {
+					BibliotekariWindow frame = new BibliotekariWindow();
+					frame.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "Nemate dozvolu");
+				};
+				
+			}
+		});
 		btnBibliotekari.setBounds(86, 281, 126, 76);
 		panel.add(btnBibliotekari);
 		
 		JButton btnClanovi = new JButton("CLANOVI");
+		btnClanovi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ClanoviWindow frame = new ClanoviWindow();
+				frame.setVisible(true);
+			}
+		});
 		btnClanovi.setBounds(86, 414, 126, 76);
 		panel.add(btnClanovi);
 		
 		JButton btnKnjige = new JButton("KNJIGE");
+		btnKnjige.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				KnjigeWindow frame = new KnjigeWindow();
+				frame.setVisible(true);
+			}
+		});
 		btnKnjige.setBounds(343, 149, 126, 76);
 		panel.add(btnKnjige);
 		
 		JButton btnPrimerci = new JButton("PRIMERCI");
+		btnPrimerci.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PrimerakWindow frame = new PrimerakWindow();
+				frame.setVisible(true);
+			}
+		});
 		btnPrimerci.setBounds(343, 281, 126, 76);
 		panel.add(btnPrimerci);
 		
 		JButton btnZanrovi = new JButton("ZANROVI");
+		btnZanrovi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ZanroviWindow frame = new ZanroviWindow();
+				frame.setVisible(true);
+			}
+		});
 		btnZanrovi.setBounds(583, 281, 126, 76);
 		panel.add(btnZanrovi);
 		
 		JButton btnTipClanarine = new JButton("TIP CLANARINE");
+		btnTipClanarine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ClanarineWindow frame = new ClanarineWindow();
+				frame.setVisible(true);
+			}
+		});
 		btnTipClanarine.setBounds(583, 149, 126, 76);
 		panel.add(btnTipClanarine);
 		
