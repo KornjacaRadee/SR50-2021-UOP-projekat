@@ -30,7 +30,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Window.Type;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-public class Adminiwindow extends JFrame {
+public class BibliotekariWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -51,7 +51,7 @@ public class Adminiwindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Adminiwindow frame = new Adminiwindow();
+					BibliotekariWindow frame = new BibliotekariWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,7 +64,7 @@ public class Adminiwindow extends JFrame {
 	 */
 	Biblioteka biblioteka = new Biblioteka();
 	private JTextField plata;
-	public Adminiwindow() {
+	public BibliotekariWindow() {
 		setResizable(false);
 		setType(Type.UTILITY);
 		setTitle("Admini");

@@ -246,6 +246,7 @@ public class Biblioteka {
                 Admin admin = new Admin(id,ime, prezime, adresa, jmbg, pol,korisnickoIme,korisnickaSifra,plata);
                 this.admini.add(admin);
             }
+            reader.close();
         } catch (IOException e) {
             System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
         }
@@ -400,21 +401,21 @@ public class Biblioteka {
 		}
 	}
 	
-	public void snimiAdmine() {
+	public void snimiAdmine(String fajl,boolean tip) {
 		String sadrzaj = "";
 		for (Admin admin: this.admini) {
 			sadrzaj += admin.getId() + "|" + admin.getIme() + "|" + admin.getPrezime() + "|" + admin.getAdresa() + 
 					"|" + admin.getJMBG() +"|"+ admin.getPolovi() + "|" + admin.getKorisnickoIme() + "|" + admin.getKorisnickaSifra() + "|"+ admin.getPlata() + "\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/admini.txt");
-			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,true));
+			File korisniciFile = new File("fajlovi/"+fajl);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tip));
 			writer.write(sadrzaj);
 			writer.close();
-			System.out.println("test");
 		}catch(IOException e){
 			System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
 		}
+		
 	}
 	public void snimiBibliotekare() {
 		String sadrzaj = "";

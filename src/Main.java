@@ -39,11 +39,11 @@ public class Main {
         biblioteka.setPrimerak(primerci);
         biblioteka.snimiPrimerke();
         
-        Admin admin = new Admin("002","Milorad","Djurica","Bulevar","1231231231",Pol.valueOf("MUSKI"),"sIFRA","DASDASD",123123123.22);
-        ArrayList<Admin> admini = new ArrayList<Admin>();
-        admini.add(admin);
-        biblioteka.setAdmini(admini);
-        biblioteka.snimiAdmine();
+       // Admin admin = new Admin("002","Milorad","Djurica","Bulevar","1231231231",Pol.valueOf("MUSKI"),"sIFRA","DASDASD",123123123.22);
+       // ArrayList<Admin> admini = new ArrayList<Admin>();
+       // admini.add(admin);
+      //  biblioteka.setAdmini(admini);
+       // biblioteka.snimiAdmine("admini.txt",true);
         
      
         
@@ -113,10 +113,10 @@ public class Main {
             System.out.println(zanr1.getOpis());
         }
         
-        biblioteka.ucitajAdmine();
-        for(Admin admin1 : biblioteka.getAdmini()) {
-            System.out.println(admin1.getId());
-        }
+   //    biblioteka.ucitajAdmine();
+    //    for(Admin admin1 : biblioteka.getAdmini()) {
+   //         System.out.println(admin1.getId());
+  //      }
         
         biblioteka.ucitajPrimerakKnjige();
         for(Primerak primerak2 : biblioteka.getPrimerak()) {
