@@ -70,7 +70,7 @@ public class BibliotekariWindow extends JFrame {
 		setType(Type.UTILITY);
 		setTitle("Admini");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 910, 356);
+		setBounds(100, 100, 910, 415);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -78,11 +78,12 @@ public class BibliotekariWindow extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 255, 255));
-		panel.setBounds(0, 0, 894, 317);
+		panel.setBounds(0, 0, 894, 384);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		table = new JTable();
+		table.setBackground(new Color(255, 255, 204));
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -108,7 +109,7 @@ public class BibliotekariWindow extends JFrame {
 		// Object[] column = {"ID","IME","PREZIME","ADRESA","JMBG","POL","KORISNICKO IME","SIFRA","PLATA"};
 			}
 		});
-		table.setBounds(10, 11, 564, 224);
+		table.setBounds(10, 11, 590, 349);
 		model = new DefaultTableModel();
 		Object[] column = {"ID","IME","PREZIME","ADRESA","JMBG","POL","KORISNICKO IME","SIFRA","PLATA"};
 		Object[] row = new Object[9];
@@ -131,75 +132,75 @@ public class BibliotekariWindow extends JFrame {
 		panel.add(table);
 		
 		JLabel lblNewLabel = new JLabel("Id");
-		lblNewLabel.setBounds(625, 40, 46, 14);
+		lblNewLabel.setBounds(625, 20, 46, 14);
 		panel.add(lblNewLabel);
 		
 		id = new JTextField();
-		id.setBounds(706, 31, 86, 20);
+		id.setBounds(706, 11, 178, 20);
 		panel.add(id);
 		id.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Ime");
-		lblNewLabel_1.setBounds(625, 71, 46, 14);
+		lblNewLabel_1.setBounds(625, 51, 46, 14);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Prezime");
-		lblNewLabel_2.setBounds(625, 96, 46, 14);
+		lblNewLabel_2.setBounds(625, 76, 46, 14);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Adresa");
-		lblNewLabel_3.setBounds(625, 254, 46, 14);
+		lblNewLabel_3.setBounds(625, 234, 46, 14);
 		panel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("JMBG");
-		lblNewLabel_4.setBounds(625, 127, 46, 14);
+		lblNewLabel_4.setBounds(625, 107, 46, 14);
 		panel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Korisnicko ime");
-		lblNewLabel_5.setBounds(625, 159, 71, 14);
+		lblNewLabel_5.setBounds(625, 139, 71, 14);
 		panel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_5_1 = new JLabel("Sifra");
-		lblNewLabel_5_1.setBounds(625, 187, 46, 14);
+		lblNewLabel_5_1.setBounds(625, 167, 46, 14);
 		panel.add(lblNewLabel_5_1);
 		
 		ime = new JTextField();
-		ime.setBounds(706, 62, 86, 20);
+		ime.setBounds(706, 42, 178, 20);
 		panel.add(ime);
 		ime.setColumns(10);
 		
 		prezime = new JTextField();
 		prezime.setColumns(10);
-		prezime.setBounds(706, 93, 86, 20);
+		prezime.setBounds(706, 73, 178, 20);
 		panel.add(prezime);
 		
 		jmbg = new JTextField();
 		jmbg.setColumns(10);
-		jmbg.setBounds(706, 124, 86, 20);
+		jmbg.setBounds(706, 104, 178, 20);
 		panel.add(jmbg);
 		
 		korisnickoIme = new JTextField();
 		korisnickoIme.setColumns(10);
-		korisnickoIme.setBounds(706, 156, 86, 20);
+		korisnickoIme.setBounds(706, 136, 178, 20);
 		panel.add(korisnickoIme);
 		
 		sifra = new JTextField();
 		sifra.setColumns(10);
-		sifra.setBounds(706, 184, 86, 20);
+		sifra.setBounds(706, 164, 178, 20);
 		panel.add(sifra);
 		
 		adresa = new JTextField();
-		adresa.setBounds(706, 251, 86, 20);
+		adresa.setBounds(706, 231, 178, 20);
 		panel.add(adresa);
 		adresa.setColumns(10);
 		
 		polo = new JTextField();
-		polo.setBounds(706, 215, 86, 20);
+		polo.setBounds(706, 195, 178, 20);
 		panel.add(polo);
 		polo.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Pol");
-		lblNewLabel_6.setBounds(625, 218, 46, 14);
+		lblNewLabel_6.setBounds(625, 198, 46, 14);
 		panel.add(lblNewLabel_6);
 		
 		JButton btnNewButton = new JButton("Ukloni");
@@ -240,7 +241,7 @@ public class BibliotekariWindow extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(504, 250, 89, 23);
+		btnNewButton.setBounds(795, 297, 89, 23);
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Dodaj");
@@ -284,7 +285,7 @@ public class BibliotekariWindow extends JFrame {
 			}
 			// Object[] column = {"ID","IME","PREZIME","ADRESA","JMBG","POL","KORISNICKO IME","SIFRA","PLATA"};
 		});
-		btnNewButton_1.setBounds(405, 250, 89, 23);
+		btnNewButton_1.setBounds(699, 297, 89, 23);
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Azuriraj");
@@ -367,15 +368,15 @@ public class BibliotekariWindow extends JFrame {
 				
 			
 		});
-		btnNewButton_2.setBounds(20, 250, 89, 23);
+		btnNewButton_2.setBounds(699, 331, 89, 23);
 		panel.add(btnNewButton_2);
 		
 		JLabel Labla = new JLabel("Plata");
-		Labla.setBounds(625, 289, 46, 14);
+		Labla.setBounds(625, 269, 46, 14);
 		panel.add(Labla);
 		
 		plata = new JTextField();
-		plata.setBounds(706, 286, 86, 20);
+		plata.setBounds(706, 266, 178, 20);
 		panel.add(plata);
 		plata.setColumns(10);
 		

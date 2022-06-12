@@ -6,24 +6,29 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class KnjigeWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField id;
+	private JTextField naslov;
+	private JTextField orgNaslov;
+	private JTextField pisac;
+	private JTextField godinaIzdavanja;
+	private JTextField jezik;
+	private JTextField zanr;
+	DefaultTableModel model;
 
 	/**
 	 * Launch the application.
@@ -45,104 +50,111 @@ public class KnjigeWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public KnjigeWindow() {
+		setTitle("Knjige");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 374);
+		setBounds(100, 100, 1019, 488);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+	
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 255, 255));
-		panel.setBounds(0, 0, 434, 335);
+		panel.setBounds(0, 0, 1003, 449);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		table = new JTable();
-		table.setBounds(10, 11, 227, 138);
+		table.setBounds(10, 11, 657, 396);
 		panel.add(table);
 		
 		JLabel lblNewLabel = new JLabel("Id");
-		lblNewLabel.setBounds(247, 24, 46, 14);
+		lblNewLabel.setBounds(716, 14, 46, 14);
 		panel.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(328, 21, 86, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		id = new JTextField();
+		id.setBounds(797, 11, 184, 20);
+		panel.add(id);
+		id.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Ukloni");
-		btnNewButton.setBounds(119, 160, 89, 23);
+		btnNewButton.setBounds(892, 359, 89, 23);
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Dodaj");
-		btnNewButton_1.setBounds(10, 160, 89, 23);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnNewButton_1.setBounds(793, 415, 89, 23);
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Azuriraj");
-		btnNewButton_2.setBounds(10, 227, 89, 23);
+		btnNewButton_2.setBounds(793, 359, 89, 23);
 		panel.add(btnNewButton_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("Naslov");
-		lblNewLabel_1.setBounds(247, 55, 46, 14);
+		lblNewLabel_1.setBounds(716, 45, 46, 14);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Org Naslov");
-		lblNewLabel_2.setBounds(247, 86, 71, 14);
+		lblNewLabel_2.setBounds(716, 76, 71, 14);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("Pisac");
-		lblNewLabel_4.setBounds(247, 117, 46, 14);
+		lblNewLabel_4.setBounds(716, 107, 46, 14);
 		panel.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Godina izdavanja");
-		lblNewLabel_5.setBounds(247, 149, 71, 14);
+		lblNewLabel_5.setBounds(716, 139, 71, 14);
 		panel.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_5_1 = new JLabel("Jezik");
-		lblNewLabel_5_1.setBounds(247, 177, 46, 14);
+		lblNewLabel_5_1.setBounds(716, 167, 46, 14);
 		panel.add(lblNewLabel_5_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(328, 52, 86, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		naslov = new JTextField();
+		naslov.setBounds(797, 42, 184, 20);
+		panel.add(naslov);
+		naslov.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(328, 83, 86, 20);
-		panel.add(textField_2);
+		orgNaslov = new JTextField();
+		orgNaslov.setColumns(10);
+		orgNaslov.setBounds(797, 73, 184, 20);
+		panel.add(orgNaslov);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(328, 114, 86, 20);
-		panel.add(textField_3);
+		pisac = new JTextField();
+		pisac.setColumns(10);
+		pisac.setBounds(797, 104, 184, 20);
+		panel.add(pisac);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(328, 146, 86, 20);
-		panel.add(textField_4);
+		godinaIzdavanja = new JTextField();
+		godinaIzdavanja.setColumns(10);
+		godinaIzdavanja.setBounds(797, 136, 184, 20);
+		panel.add(godinaIzdavanja);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(328, 174, 86, 20);
-		panel.add(textField_5);
+		jezik = new JTextField();
+		jezik.setColumns(10);
+		jezik.setBounds(797, 164, 184, 20);
+		panel.add(jezik);
 		
 		JLabel lblNewLabel_6 = new JLabel("Opis");
-		lblNewLabel_6.setBounds(143, 247, 46, 14);
+		lblNewLabel_6.setBounds(716, 231, 46, 14);
 		panel.add(lblNewLabel_6);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(197, 247, 227, 77);
-		panel.add(textArea);
+		JTextArea opis = new JTextArea();
+		opis.setBounds(797, 232, 184, 116);
+		panel.add(opis);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(328, 205, 86, 20);
-		panel.add(textField_6);
-		textField_6.setColumns(10);
+		zanr = new JTextField();
+		zanr.setBounds(797, 195, 184, 20);
+		panel.add(zanr);
+		zanr.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Zanr");
-		lblNewLabel_3.setBounds(247, 208, 46, 14);
+		lblNewLabel_3.setBounds(716, 198, 46, 14);
 		panel.add(lblNewLabel_3);
 	}
 }

@@ -158,6 +158,26 @@ public class Mainwindow extends JFrame {
 		});
 		izdaja.setBounds(343, 414, 126, 76);
 		panel.add(izdaja);
+		
+		
+		JButton login = new JButton("Log in");
+		login.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(getTitle().equals("Admin panel") || getTitle().equals("Bibliotekar panel")) {
+					JOptionPane.showMessageDialog(null, "Vec ste ulogovani");
+					login.setBackground(Color.RED);
+				}else {
+					login frame = new login();
+					frame.setVisible(true);
+					setVisible(false);
+				};
+			}
+		});
+		login.setBackground(new Color(204, 255, 153));
+		login.setBounds(635, 499, 110, 37);
+		panel.add(login);
+
+		
 
 	}
 }
