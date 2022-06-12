@@ -47,11 +47,11 @@ public class Main {
         
      
         
-        ZanrKnjige zanr2 = new ZanrKnjige("HOROR","STRASNO");
-        ArrayList<ZanrKnjige> zanrovi = new ArrayList<ZanrKnjige>();
-        zanrovi.add(zanr2);
-        biblioteka.setZanrovi(zanrovi);
-        biblioteka.snimiZanr();
+//        ZanrKnjige zanr2 = new ZanrKnjige("HOROR","STRASNO");
+//        ArrayList<ZanrKnjige> zanrovi = new ArrayList<ZanrKnjige>();
+//        zanrovi.add(zanr2);
+//        biblioteka.setZanrovi(zanrovi);
+//        biblioteka.snimiZanr();
         
         
             

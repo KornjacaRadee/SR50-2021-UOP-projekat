@@ -152,37 +152,18 @@ public class ClanarineWindow extends JFrame {
 		JButton btnNewButton_1 = new JButton("Dodaj");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int i = table.getSelectedRow();
-				model.removeRow(i);
-				int brojac = 0;
-			      biblioteka.ucitajAdmine();
-			      File temp = new File("fajlovi/tipClanarine.txt");
-			      File existing = new File("fajlovi/tipClan.txt");
-			      temp.delete();
-			      try {
-					temp.createNewFile();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			        for(TipClanarine clan : biblioteka.getTipClanarine()) {
-			        	if(clan == null) {
-			        		break;
-			        	}
-			        	else if(brojac != i) {
-			            	TipClanarine admin = new TipClanarine( clan.getId() , clan.getNaziv() , Double.valueOf(clan.getCena()));
-			                ArrayList<TipClanarine> admini = new ArrayList<TipClanarine>();
-			                admini.add(admin);
-			                biblioteka.setTipClanarine(admini);
-			                biblioteka.snimiTipClanarine(true,"tipClanarine.txt");
-			                brojac += 1;
-			            } else {
-						};
-			            
-		               
-			        }
-			       System.out.println(existing.delete());
-		           temp.renameTo(existing);
-		           
+					String row0 = String.valueOf(ide.getText());
+					String row1 = String.valueOf(naziv.getText());
+					Double row8 = Double.valueOf(cena.getText());
+					TipClanarine admin = new TipClanarine(row0,row1,row8);
+			        ArrayList<TipClanarine> admini1 = new ArrayList<TipClanarine>();
+			        admini1.add(admin);
+			        biblioteka.setTipClanarine(admini1);
+			        row[0] = row0;
+			        row[1] = row1;
+			        row[2] = row8;
+			        model.addRow(row);
+			        biblioteka.snimiTipClanarine(true,"tipClan.txt");
 				
 			}
 		});
@@ -224,7 +205,7 @@ public class ClanarineWindow extends JFrame {
 			       System.out.println(existing.delete());
 		           temp.renameTo(existing);
 		           
-		           String row0 = String.valueOf(ide.getText());
+		            String row0 = String.valueOf(ide.getText());
 					String row1 = String.valueOf(naziv.getText());
 					Double row8 = Double.valueOf(cena.getText());
 					TipClanarine admin = new TipClanarine(row0,row1,row8);

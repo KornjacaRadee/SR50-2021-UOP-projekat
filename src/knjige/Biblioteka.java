@@ -205,18 +205,20 @@ public class Biblioteka {
                 ZanrKnjige zanr = new ZanrKnjige(oznaka,opis);
                 this.zanrovi.add(zanr);
             }
+            reader.close();
         } catch (IOException e) {
             System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
         }
+        
     }
-	public void snimiZanr() {
+	public void snimiZanr(Boolean tip,String fajl) {
 		String sadrzaj = "";
 		for (ZanrKnjige zanr: this.zanrovi) {
 			sadrzaj += zanr.getOznaka() +"|"+ zanr.getOpis() + "\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/zanrovi.txt");
-			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
+			File korisniciFile = new File("fajlovi/"+fajl);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tip));
 			writer.write(sadrzaj);
 			writer.close();
 		}catch(IOException e){
@@ -241,8 +243,6 @@ public class Biblioteka {
                 String korisnickoIme = lineSplit[6];
             	String korisnickaSifra = lineSplit[7];
             	double plata = Double.parseDouble(lineSplit[8]);
-                
-                
                 Admin admin = new Admin(id,ime, prezime, adresa, jmbg, pol,korisnickoIme,korisnickaSifra,plata);
                 this.admini.add(admin);
             }
