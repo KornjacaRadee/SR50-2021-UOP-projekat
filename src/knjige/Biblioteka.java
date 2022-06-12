@@ -168,7 +168,7 @@ public class Biblioteka {
 
 	public void ucitajClanove() {
         try {
-            File korisniciFile = new File("src/fajlovi/clanovi.txt");
+            File korisniciFile = new File("fajlovi/clanovi.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -195,7 +195,7 @@ public class Biblioteka {
     }
 	public void ucitajZanrove() {
         try {
-            File korisniciFile = new File("src/fajlovi/zanrovi.txt");
+            File korisniciFile = new File("fajlovi/zanrovi.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -215,7 +215,7 @@ public class Biblioteka {
 			sadrzaj += zanr.getOznaka() +"|"+ zanr.getOpis() + "\n";
 		}
 		try {
-			File korisniciFile = new File("src/fajlovi/zanrovi.txt");
+			File korisniciFile = new File("fajlovi/zanrovi.txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
 			writer.write(sadrzaj);
 			writer.close();
@@ -227,7 +227,7 @@ public class Biblioteka {
 	
 	public void ucitajAdmine() {
         try {
-            File korisniciFile = new File("src/fajlovi/admini.txt");
+            File korisniciFile = new File("fajlovi/admini.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -252,7 +252,7 @@ public class Biblioteka {
     }
 	public void ucitajBibliotekare() {
         try {
-            File korisniciFile = new File("src/fajlovi/bibliotekari.txt");
+            File korisniciFile = new File("fajlovi/bibliotekari.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -277,7 +277,7 @@ public class Biblioteka {
     }
 	public void ucitajTipClanarine() {
         try {
-            File korisniciFile = new File("src/fajlovi/tipClan.txt");
+            File korisniciFile = new File("fajlovi/tipClan.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -299,7 +299,7 @@ public class Biblioteka {
 			sadrzaj += tip.getId() + "|" + tip.getNaziv() + "|" + tip.getCena()+ "|"+ "\n";
 		}
 		try {
-			File korisniciFile = new File("src/fajlovi/tipClan.txt");
+			File korisniciFile = new File("fajlovi/tipClan.txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
 			writer.write(sadrzaj);
 			writer.close();
@@ -310,7 +310,7 @@ public class Biblioteka {
 	
 	public void ucitajKnjige() {
         try {
-            File korisniciFile = new File("src/fajlovi/knjige.txt");
+            File korisniciFile = new File("fajlovi/knjige.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -363,7 +363,7 @@ public class Biblioteka {
 	
 	public void ucitajPrimerakKnjige() {
         try {
-            File korisniciFile = new File("src/fajlovi/primerci.txt");
+            File korisniciFile = new File("fajlovi/primerci.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -391,7 +391,7 @@ public class Biblioteka {
 					"|" + clan.getJMBG() +"|" + clan.getPolovi() + "|" + clan.getBrojClanskeKarte() + "|" + clan.getTip() + "|"+ clan.getDatumUplate() + "|"+ clan.getBrojMeseci() + "|"+ clan.isAktivnost() + "\n";
 		}
 		try {
-			File korisniciFile = new File("src/fajlovi/clanovi.txt");
+			File korisniciFile = new File("fajlovi/clanovi.txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
 			writer.write(sadrzaj);
 			writer.close();
@@ -407,8 +407,8 @@ public class Biblioteka {
 					"|" + admin.getJMBG() +"|"+ admin.getPolovi() + "|" + admin.getKorisnickoIme() + "|" + admin.getKorisnickaSifra() + "|"+ admin.getPlata() + "\n";
 		}
 		try {
-			File korisniciFile = new File("src/fajlovi/admini.txt");
-			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
+			File korisniciFile = new File("fajlovi/admini.txt");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,true));
 			writer.write(sadrzaj);
 			writer.close();
 			System.out.println("test");
@@ -423,7 +423,7 @@ public class Biblioteka {
 					"|" + bibliotekar.getJMBG()+ "|"+ bibliotekar.getPolovi() + "|" + bibliotekar.getKorisnickoIme() + "|" + bibliotekar.getKorisnickaSifra() + "|"+ bibliotekar.getPlata() + "\n";
 		}
 		try {
-			File korisniciFile = new File("src/fajlovi/bibliotekari.txt");
+			File korisniciFile = new File("fajlovi/bibliotekari.txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
 			writer.write(sadrzaj);
 			writer.close();
@@ -437,7 +437,7 @@ public class Biblioteka {
 			sadrzaj += knjiga.getId() + "|" + knjiga.getNaslov() + "|"+ knjiga.getOrgNaslov() + "|"+ knjiga.getPisac() + "|"+ knjiga.getGodinaIzdavanja() + "|"+ knjiga.getJezik() + "|"+ knjiga.getOpis() + "|"+ knjiga.getZanr()  + "\n";
 		}
 		try {
-			File korisniciFile = new File("src/fajlovi/knjige.txt");
+			File korisniciFile = new File("fajlovi/knjige.txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
 			writer.write(sadrzaj);
 			writer.close();
@@ -451,7 +451,7 @@ public class Biblioteka {
 			sadrzaj += primerak.getKnjiga() + "|" + primerak.getBrojStrana() + "|"+ primerak.getPovez() + "|"+ primerak.getGodinaStampanja() + "|"+ primerak.getJezikStampanja() + "|"+ primerak.isDostupnost()  + "\n";
 		}
 		try {
-			File korisniciFile = new File("src/fajlovi/primerci.txt");
+			File korisniciFile = new File("fajlovi/primerci.txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
 			writer.write(sadrzaj);
 			writer.close();
