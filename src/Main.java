@@ -55,11 +55,11 @@ public class Main {
         
         
             
-        Bibliotekar bibliotekar = new Bibliotekar("002","Milorad","Djurica","Bulevar","1231231231",Pol.valueOf("MUSKI"),"sIFRA","DASDASD",123123123.22);
-        ArrayList<Bibliotekar> bibliotekari = new ArrayList<Bibliotekar>();
-        bibliotekari.add(bibliotekar);
-        biblioteka.setBibliotekari(bibliotekari);
-        biblioteka.snimiBibliotekare();
+      //  Bibliotekar bibliotekar = new Bibliotekar("002","Milorad","Djurica","Bulevar","1231231231",Pol.valueOf("MUSKI"),"sIFRA","DASDASD",123123123.22);
+     //   ArrayList<Bibliotekar> bibliotekari = new ArrayList<Bibliotekar>();
+     //   bibliotekari.add(bibliotekar);
+     //   biblioteka.setBibliotekari(bibliotekari);
+     //   biblioteka.snimiBibliotekare();
         
         
         

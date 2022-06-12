@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 import knjige.Biblioteka;
 import ljudi.Admin;
+import ljudi.Bibliotekar;
 import ljudi.Pol;
 
 import java.awt.Color;
@@ -112,8 +113,8 @@ public class BibliotekariWindow extends JFrame {
 		Object[] column = {"ID","IME","PREZIME","ADRESA","JMBG","POL","KORISNICKO IME","SIFRA","PLATA"};
 		Object[] row = new Object[9];
 		model.setColumnIdentifiers(column);
-		biblioteka.ucitajAdmine();
-        for(Admin admin1 : biblioteka.getAdmini()) {
+		biblioteka.ucitajBibliotekare();
+        for(Bibliotekar admin1 : biblioteka.getBibliotekari()) {
         	row[0] = admin1.getId();
         	row[1] = admin1.getIme();
         	row[2] = admin1.getPrezime();
@@ -207,27 +208,28 @@ public class BibliotekariWindow extends JFrame {
 				int i = table.getSelectedRow();
 				model.removeRow(i);
 				int brojac = 0;
-			      biblioteka.ucitajAdmine();
-			      File temp = new File("fajlovi/admini1.txt");
-			      File existing = new File("fajlovi/admini.txt");
+			      biblioteka.ucitajBibliotekare();
+			      File temp = new File("fajlovi/bibliotekari1.txt");
+			      File existing = new File("fajlovi/bibliotekari.txt");
 			      temp.delete();
 			      try {
 					temp.createNewFile();
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-			        for(Admin admin1 : biblioteka.getAdmini()) {
+			        for(Bibliotekar admin1 : biblioteka.getBibliotekari()) {
 			        	if(admin1 == null) {
 			        		break;
 			        	}
 			        	else if(brojac != i) {
-			            	Admin admin = new Admin( admin1.getId() , admin1.getIme() , admin1.getPrezime() , admin1.getAdresa() , admin1.getJMBG() , admin1.getPolovi() , admin1.getKorisnickoIme() , admin1.getKorisnickaSifra() , admin1.getPlata());
-			                ArrayList<Admin> admini = new ArrayList<Admin>();
+			            	Bibliotekar admin = new Bibliotekar( admin1.getId() , admin1.getIme() , admin1.getPrezime() , admin1.getAdresa() , admin1.getJMBG() , admin1.getPolovi() , admin1.getKorisnickoIme() , admin1.getKorisnickaSifra() , admin1.getPlata());
+			                ArrayList<Bibliotekar> admini = new ArrayList<Bibliotekar>();
 			                admini.add(admin);
-			                biblioteka.setAdmini(admini);
-			                biblioteka.snimiAdmine("admini1.txt",true);
+			                biblioteka.setBibliotekari(admini);
+			                biblioteka.snimiBibliotekare("bibliotekari1.txt",true);
 			                brojac += 1;
 			            } else {
+			            	
 						};
 			            
 		               
@@ -253,18 +255,18 @@ public class BibliotekariWindow extends JFrame {
 				String row6 = String.valueOf(korisnickoIme.getText());
 				String row7 = String.valueOf(sifra.getText());
 				Double row8 = Double.valueOf(plata.getText());
-				Admin admin = new Admin(row0,row1,row2,row3,row4,row5,row6,row7,row8);
-		        ArrayList<Admin> admini = new ArrayList<Admin>();
+				Bibliotekar admin = new Bibliotekar(row0,row1,row2,row3,row4,row5,row6,row7,row8);
+				ArrayList<Bibliotekar> admini = new ArrayList<Bibliotekar>();
 		        admini.add(admin);
-		        biblioteka.setAdmini(admini);
-		        biblioteka.snimiAdmine("admini.txt",true);
-		        JOptionPane.showMessageDialog(null, "Uspesno dodat admin");
+		        biblioteka.setBibliotekari(admini);
+		        biblioteka.snimiBibliotekare("bibliotekari.txt",true);
+		        JOptionPane.showMessageDialog(null, "Uspesno dodat bibliotekar");
 		        int rowCount = table.getRowCount();
 		      for (int i = rowCount - 1; i >= 0; i--) {
 		          model.removeRow(i);
 		      }
-		    	biblioteka.ucitajAdmine();
-		        for(Admin admin1 : biblioteka.getAdmini()) {
+		    	biblioteka.ucitajBibliotekare();
+		        for(Bibliotekar admin1 : biblioteka.getBibliotekari()) {
 		        	row[0] = admin1.getId();
 		        	row[1] = admin1.getIme();
 		        	row[2] = admin1.getPrezime();
@@ -291,25 +293,25 @@ public class BibliotekariWindow extends JFrame {
 				int i = table.getSelectedRow();
 				model.removeRow(i);
 				int brojac = 0;
-			      biblioteka.ucitajAdmine();
-			      File temp = new File("fajlovi/admini1.txt");
-			      File existing = new File("fajlovi/admini.txt");
+			      biblioteka.ucitajBibliotekare();
+			      File temp = new File("fajlovi/bibliotekari1.txt");
+			      File existing = new File("fajlovi/bibliotekari.txt");
 			      temp.delete();
 			      try {
 					temp.createNewFile();
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-			        for(Admin admin1 : biblioteka.getAdmini()) {
+			        for(Bibliotekar admin1 : biblioteka.getBibliotekari()) {
 			        	if(admin1 == null) {
 			        		break;
 			        	}
 			        	else if(brojac != i) {
-			            	Admin admin = new Admin( admin1.getId() , admin1.getIme() , admin1.getPrezime() , admin1.getAdresa() , admin1.getJMBG() , admin1.getPolovi() , admin1.getKorisnickoIme() , admin1.getKorisnickaSifra() , admin1.getPlata());
-			                ArrayList<Admin> admini = new ArrayList<Admin>();
+			            	Bibliotekar admin = new Bibliotekar( admin1.getId() , admin1.getIme() , admin1.getPrezime() , admin1.getAdresa() , admin1.getJMBG() , admin1.getPolovi() , admin1.getKorisnickoIme() , admin1.getKorisnickaSifra() , admin1.getPlata());
+			            	ArrayList<Bibliotekar> admini = new ArrayList<Bibliotekar>();
 			                admini.add(admin);
-			                biblioteka.setAdmini(admini);
-			                biblioteka.snimiAdmine("admini1.txt",true);
+			                biblioteka.setBibliotekari(admini);
+			                biblioteka.snimiBibliotekare("bibliotekari1.txt",true);
 			                brojac += 1;
 			            } else {
 
@@ -331,19 +333,19 @@ public class BibliotekariWindow extends JFrame {
 					String row6 = String.valueOf(korisnickoIme.getText());
 					String row7 = String.valueOf(sifra.getText());
 					Double row8 = Double.valueOf(plata.getText());
-					Admin admin = new Admin(row0,row1,row2,row3,row4,row5,row6,row7,row8);
-			        ArrayList<Admin> admini1 = new ArrayList<Admin>();
+					Bibliotekar admin = new Bibliotekar(row0,row1,row2,row3,row4,row5,row6,row7,row8);
+					ArrayList<Bibliotekar> admini1 = new ArrayList<Bibliotekar>();
 			        admini1.add(admin);
-			        biblioteka.setAdmini(admini1);
-			        biblioteka.snimiAdmine("admini.txt",true);
+			        biblioteka.setBibliotekari(admini1);
+			        biblioteka.snimiBibliotekare("bibliotekari.txt",true);
 			        
 			        
 			        int rowCount = table.getRowCount();
 				      for (int a = rowCount-1; a >= 0; a--) {
 				          model.removeRow(a);
 				      }
-				    	biblioteka.ucitajAdmine();
-				        for(Admin admin1 : biblioteka.getAdmini()) {
+				    	biblioteka.ucitajBibliotekare();
+				        for(Bibliotekar admin1 : biblioteka.getBibliotekari()) {
 				        	row[0] = admin1.getId();
 				        	row[1] = admin1.getIme();
 				        	row[2] = admin1.getPrezime();

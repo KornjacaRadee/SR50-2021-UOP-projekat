@@ -272,9 +272,11 @@ public class Biblioteka {
                 Bibliotekar bibliotekar = new Bibliotekar(id,ime, prezime, adresa, jmbg, pol,korisnickoIme,korisnickaSifra,plata);
                 this.bibliotekari.add(bibliotekar);
             }
+            reader.close();
         } catch (IOException e) {
             System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
         }
+        
     }
 	public void ucitajTipClanarine() {
         try {
@@ -417,15 +419,15 @@ public class Biblioteka {
 		}
 		
 	}
-	public void snimiBibliotekare() {
+	public void snimiBibliotekare(String fajl,boolean tip) {
 		String sadrzaj = "";
 		for (Bibliotekar bibliotekar: this.bibliotekari) {
 			sadrzaj += bibliotekar.getId() + "|" + bibliotekar.getIme() + "|" + bibliotekar.getPrezime() + "|" + bibliotekar.getAdresa() + 
 					"|" + bibliotekar.getJMBG()+ "|"+ bibliotekar.getPolovi() + "|" + bibliotekar.getKorisnickoIme() + "|" + bibliotekar.getKorisnickaSifra() + "|"+ bibliotekar.getPlata() + "\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/bibliotekari.txt");
-			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
+			File korisniciFile = new File("fajlovi/"+fajl);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tip));
 			writer.write(sadrzaj);
 			writer.close();
 		}catch(IOException e){
