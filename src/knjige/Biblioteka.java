@@ -292,18 +292,20 @@ public class Biblioteka {
                 TipClanarine tip  = new TipClanarine(id,naziv,cena);
                 this.tipClanarine.add(tip);
             }
+            reader.close();
         } catch (IOException e) {
             System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
         }
+        
     }
-	public void snimiTipClanarine() {
+	public void snimiTipClanarine(Boolean tipo,String fajl) {
 		String sadrzaj = "";
 		for (TipClanarine tip: this.tipClanarine) {
 			sadrzaj += tip.getId() + "|" + tip.getNaziv() + "|" + tip.getCena()+ "|"+ "\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/tipClan.txt");
-			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
+			File korisniciFile = new File("fajlovi/"+fajl);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tipo));
 			writer.write(sadrzaj);
 			writer.close();
 		}catch(IOException e){

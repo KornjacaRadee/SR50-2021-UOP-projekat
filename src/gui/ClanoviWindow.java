@@ -81,6 +81,8 @@ public class ClanoviWindow extends JFrame {
 		model.setColumnIdentifiers(column);
 		biblioteka.ucitajClanove();
         for(Clan clan : biblioteka.getClanovi()) {
+        	
+        	TipClanarine clanarina = new TipClanarine();
         	row[0] = clan.getId();
         	row[1] = clan.getIme();
         	row[2] = clan.getPrezime();
@@ -88,7 +90,7 @@ public class ClanoviWindow extends JFrame {
         	row[4] = clan.getJMBG();
         	row[5] = clan.getPolovi();
         	row[6] = clan.getBrojClanskeKarte();
-        	row[7] = clan.getTip();
+        	row[7] = "Decja";
         	row[8] = clan.getDatumUplate();
         	row[9] = clan.getBrojMeseci();
         	row[10] = clan.isAktivnost();

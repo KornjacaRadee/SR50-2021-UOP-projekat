@@ -75,11 +75,11 @@ public class Main {
         biblioteka.setClanovi(clanovi);
         biblioteka.snimiClanove();
         
-        TipClanarine tipClanarine = new TipClanarine("002321","Decija",150.00);
-        ArrayList<TipClanarine> tipClan = new ArrayList<TipClanarine>();
-        tipClan.add(tipClanarine);
-        biblioteka.setTipClanarine(tipClan);
-        biblioteka.snimiTipClanarine();
+       // TipClanarine tipClanarine = new TipClanarine("002321","Decija",150.00);
+     //   ArrayList<TipClanarine> tipClan = new ArrayList<TipClanarine>();
+      //  tipClan.add(tipClanarine);
+      //  biblioteka.setTipClanarine(tipClan);
+       // biblioteka.snimiTipClanarine();
         
         
         

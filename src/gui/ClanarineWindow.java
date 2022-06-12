@@ -6,24 +6,40 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import ljudi.Admin;
+import ljudi.Clan;
+import ljudi.Pol;
+import knjige.Biblioteka;
+import ljudi.TipClanarine;
+
 import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ClanarineWindow extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-
+	private JTextField ide;
+	private JTextField naziv;
+	private JTextField cena;
+	DefaultTableModel model;
 	/**
 	 * Launch the application.
 	 */
+	Biblioteka biblioteka = new Biblioteka();
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -42,7 +58,7 @@ public class ClanarineWindow extends JFrame {
 	 */
 	public ClanarineWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 239);
+		setBounds(100, 100, 496, 228);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -50,33 +66,127 @@ public class ClanarineWindow extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 255, 255));
-		panel.setBounds(0, 0, 434, 205);
+		panel.setBounds(0, 0, 480, 189);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		table = new JTable();
-		table.setBounds(10, 11, 227, 138);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int i = table.getSelectedRow();
+				ide.setText((String) model.getValueAt(i,0));
+				naziv.setText((String) model.getValueAt(i,1));
+				double temp = (double) model.getValueAt(i, 2);
+				String temp1 = temp+"";
+				cena.setText(temp1);
+			}
+		});
+		model = new DefaultTableModel();
+		Object[] column = {"ID","NAZIV","CENA"};
+		Object[] row = new Object[3];
+		model.setColumnIdentifiers(column);
+		biblioteka.ucitajTipClanarine();
+        for(TipClanarine admin1 : biblioteka.getTipClanarine()) {
+        	row[0] = admin1.getId();
+        	row[1] = admin1.getNaziv();
+        	row[2] = admin1.getCena();
+        	System.out.println(row[2]);
+            model.addRow(row);
+        }
+        model.addColumn(row);
+		table.setBounds(10, 11, 227, 162);
+		table.setModel(model);
 		panel.add(table);
+		
 		
 		JLabel lblNewLabel = new JLabel("Id");
 		lblNewLabel.setBounds(247, 24, 46, 14);
 		panel.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(328, 21, 86, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		ide = new JTextField();
+		ide.setBounds(328, 21, 142, 20);
+		panel.add(ide);
+		ide.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Ukloni");
-		btnNewButton.setBounds(119, 160, 89, 23);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int i = table.getSelectedRow();
+				model.removeRow(i);
+				int brojac = 0;
+			      biblioteka.ucitajAdmine();
+			      File temp = new File("fajlovi/tipClanarine.txt");
+			      File existing = new File("fajlovi/tipClan.txt");
+			      temp.delete();
+			      try {
+					temp.createNewFile();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			        for(TipClanarine clan : biblioteka.getTipClanarine()) {
+			        	if(clan == null) {
+			        		break;
+			        	}
+			        	else if(brojac != i) {
+			            	TipClanarine admin = new TipClanarine( clan.getId() , clan.getNaziv() , Double.valueOf(clan.getCena()));
+			                ArrayList<TipClanarine> admini = new ArrayList<TipClanarine>();
+			                admini.add(admin);
+			                biblioteka.setTipClanarine(admini);
+			                biblioteka.snimiTipClanarine(true,"tipClanarine.txt");
+			                brojac += 1;
+			            } else {
+						};
+			            
+		               
+			        }
+			       System.out.println(existing.delete());
+		           temp.renameTo(existing);
+				
+			}
+			
+		});
+		btnNewButton.setBounds(381, 114, 89, 23);
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Dodaj");
-		btnNewButton_1.setBounds(10, 160, 89, 23);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String id = ide.getText();
+				String naziva = naziv.getText();
+				Double ceno = Double.valueOf(cena.getText());
+				TipClanarine tipClanarine = new TipClanarine(id,naziva,ceno);
+		        ArrayList<TipClanarine> tipClan = new ArrayList<TipClanarine>();
+		        tipClan.add(tipClanarine);
+		        biblioteka.setTipClanarine(tipClan);
+		        biblioteka.snimiTipClanarine(true,"tipClan.txt");
+		        int rowCount = table.getRowCount();
+			      for (int a = rowCount-1; a >= 0; a--) {
+			          model.removeRow(a);
+			      }
+			      	biblioteka.ucitajTipClanarine();
+			        for(TipClanarine admin1 : biblioteka.getTipClanarine()) {
+			        	row[0] = admin1.getId();
+			        	row[1] = admin1.getNaziv();
+			        	row[2] = admin1.getCena();
+			            model.addRow(row);
+			        }
+		        
+		        
+		        
+			}
+		});
+		btnNewButton_1.setBounds(275, 114, 89, 23);
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Azuriraj");
-		btnNewButton_2.setBounds(325, 160, 89, 23);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		btnNewButton_2.setBounds(381, 148, 89, 23);
 		panel.add(btnNewButton_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("Naziv");
@@ -87,14 +197,14 @@ public class ClanarineWindow extends JFrame {
 		lblNewLabel_2.setBounds(247, 86, 71, 14);
 		panel.add(lblNewLabel_2);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(328, 52, 86, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		naziv = new JTextField();
+		naziv.setBounds(328, 52, 142, 20);
+		panel.add(naziv);
+		naziv.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(328, 83, 86, 20);
-		panel.add(textField_2);
+		cena = new JTextField();
+		cena.setColumns(10);
+		cena.setBounds(328, 83, 142, 20);
+		panel.add(cena);
 	}
 }

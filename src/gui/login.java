@@ -123,6 +123,7 @@ public class login extends JFrame {
 				}else if(log == "bibliotekar") {
 					JOptionPane.showMessageDialog(null, "Bibliotekar uspesno ulogovan");
 					 Mainwindow Main = new Mainwindow();
+					 Main.setTitle("Bibliotekar panel");
 					Main.setVisible(true);
 					setVisible(false);
 				}else {
