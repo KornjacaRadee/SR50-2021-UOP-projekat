@@ -152,28 +152,38 @@ public class ClanarineWindow extends JFrame {
 		JButton btnNewButton_1 = new JButton("Dodaj");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String id = ide.getText();
-				String naziva = naziv.getText();
-				Double ceno = Double.valueOf(cena.getText());
-				TipClanarine tipClanarine = new TipClanarine(id,naziva,ceno);
-		        ArrayList<TipClanarine> tipClan = new ArrayList<TipClanarine>();
-		        tipClan.add(tipClanarine);
-		        biblioteka.setTipClanarine(tipClan);
-		        biblioteka.snimiTipClanarine(true,"tipClan.txt");
-		        int rowCount = table.getRowCount();
-			      for (int a = rowCount-1; a >= 0; a--) {
-			          model.removeRow(a);
-			      }
-			      	biblioteka.ucitajTipClanarine();
-			        for(TipClanarine admin1 : biblioteka.getTipClanarine()) {
-			        	row[0] = admin1.getId();
-			        	row[1] = admin1.getNaziv();
-			        	row[2] = admin1.getCena();
-			            model.addRow(row);
+				int i = table.getSelectedRow();
+				model.removeRow(i);
+				int brojac = 0;
+			      biblioteka.ucitajAdmine();
+			      File temp = new File("fajlovi/tipClanarine.txt");
+			      File existing = new File("fajlovi/tipClan.txt");
+			      temp.delete();
+			      try {
+					temp.createNewFile();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			        for(TipClanarine clan : biblioteka.getTipClanarine()) {
+			        	if(clan == null) {
+			        		break;
+			        	}
+			        	else if(brojac != i) {
+			            	TipClanarine admin = new TipClanarine( clan.getId() , clan.getNaziv() , Double.valueOf(clan.getCena()));
+			                ArrayList<TipClanarine> admini = new ArrayList<TipClanarine>();
+			                admini.add(admin);
+			                biblioteka.setTipClanarine(admini);
+			                biblioteka.snimiTipClanarine(true,"tipClanarine.txt");
+			                brojac += 1;
+			            } else {
+						};
+			            
+		               
 			        }
-		        
-		        
-		        
+			       System.out.println(existing.delete());
+		           temp.renameTo(existing);
+		           
+				
 			}
 		});
 		btnNewButton_1.setBounds(275, 114, 89, 23);
@@ -182,7 +192,60 @@ public class ClanarineWindow extends JFrame {
 		JButton btnNewButton_2 = new JButton("Azuriraj");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				int i = table.getSelectedRow();
+				model.removeRow(i);
+				int brojac = 0;
+			      biblioteka.ucitajAdmine();
+			      File temp = new File("fajlovi/tipClanarine.txt");
+			      File existing = new File("fajlovi/admini.txt");
+			      temp.delete();
+			      try {
+					temp.createNewFile();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			        for(Admin admin1 : biblioteka.getAdmini()) {
+			        	if(admin1 == null) {
+			        		break;
+			        	}
+			        	else if(brojac != i) {
+			            	Admin admin = new Admin( admin1.getId() , admin1.getIme() , admin1.getPrezime() , admin1.getAdresa() , admin1.getJMBG() , admin1.getPolovi() , admin1.getKorisnickoIme() , admin1.getKorisnickaSifra() , admin1.getPlata());
+			                ArrayList<Admin> admini = new ArrayList<Admin>();
+			                admini.add(admin);
+			                biblioteka.setAdmini(admini);
+			                biblioteka.snimiAdmine("admini1.txt",true);
+			                brojac += 1;
+			            } else {
+
+			                brojac += 1;
+						};	            
+		               
+			        }
+			       System.out.println(existing.delete());
+		           temp.renameTo(existing);
+		           
+		           String row0 = String.valueOf(ide.getText());
+					String row1 = String.valueOf(naziv.getText());
+					Double row8 = Double.valueOf(cena.getText());
+					TipClanarine admin = new TipClanarine(row0,row1,row8);
+			        ArrayList<TipClanarine> admini1 = new ArrayList<TipClanarine>();
+			        admini1.add(admin);
+			        biblioteka.setTipClanarine(admini1);
+			        biblioteka.snimiTipClanarine(true,"tipClan.txt");
+			        
+			        int rowCount = table.getRowCount();
+				      for (int a = rowCount-1; a >= 0; a--) {
+				          model.removeRow(a);
+				      }
+				      biblioteka.ucitajTipClanarine();
+				        for(TipClanarine admin1 : biblioteka.getTipClanarine()) {
+				        	row[0] = admin1.getId();
+				        	row[1] = admin1.getNaziv();
+				        	row[2] = admin1.getCena();
+				        	System.out.println(row[2]);
+				            model.addRow(row);
+				        }
+				      
 				
 			}
 		});
