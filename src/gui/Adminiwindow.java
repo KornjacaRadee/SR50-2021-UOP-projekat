@@ -124,7 +124,6 @@ public class Adminiwindow extends JFrame {
         	row[6] = admin1.getKorisnickoIme();
         	row[7] = admin1.getKorisnickaSifra();
         	row[8] = admin1.getPlata();
-        	System.out.println(row[2]);
             model.addRow(row);
 		}
 		table.setModel(model);
@@ -209,8 +208,8 @@ public class Adminiwindow extends JFrame {
 				model.removeRow(i);
 				int brojac = 0;
 			      biblioteka.ucitajAdmine();
-			      File temp = new File("fajlovi/admini1.txt");
-			      File existing = new File("fajlovi/admini.txt");
+			      File temp = new File("src/fajlovi/admini1.txt");
+			      File existing = new File("src/fajlovi/admini.txt");
 			      temp.delete();
 			      try {
 					temp.createNewFile();
@@ -254,6 +253,22 @@ public class Adminiwindow extends JFrame {
 				String row6 = String.valueOf(korisnickoIme.getText());
 				String row7 = String.valueOf(sifra.getText());
 				Double row8 = Double.valueOf(plata.getText());
+				biblioteka.ucitajAdmine();
+				Boolean dozvola = true;
+		        for(Admin admin1 : biblioteka.getAdmini()) {
+		        	if(row0 == "312") {
+		        		dozvola = false;
+		        		break;
+		        	}
+		        	System.out.println(dozvola);
+		        	System.out.println("red" + row0);
+	        		System.out.println("admin" + admin1.getId());
+		        }
+		        if (dozvola == false) {
+		        	JOptionPane.showMessageDialog(null, "ID je zauzet!");
+		        }else {
+		        	
+		        
 				Admin admin = new Admin(row0,row1,row2,row3,row4,row5,row6,row7,row8);
 		        ArrayList<Admin> admini = new ArrayList<Admin>();
 		        admini.add(admin);
@@ -278,6 +293,7 @@ public class Adminiwindow extends JFrame {
 		        	System.out.println(row[2]);
 		            model.addRow(row);
 				}
+			}
 		        
 				
 			}
@@ -293,8 +309,8 @@ public class Adminiwindow extends JFrame {
 				model.removeRow(i);
 				int brojac = 0;
 			      biblioteka.ucitajAdmine();
-			      File temp = new File("fajlovi/admini1.txt");
-			      File existing = new File("fajlovi/admini.txt");
+			      File temp = new File("src/fajlovi/admini1.txt");
+			      File existing = new File("src/fajlovi/admini.txt");
 			      temp.delete();
 			      try {
 					temp.createNewFile();

@@ -91,7 +91,6 @@ public class ClanarineWindow extends JFrame {
         	row[0] = admin1.getId();
         	row[1] = admin1.getNaziv();
         	row[2] = admin1.getCena();
-        	System.out.println(row[2]);
             model.addRow(row);
         }
         model.addColumn(row);
@@ -116,8 +115,8 @@ public class ClanarineWindow extends JFrame {
 				model.removeRow(i);
 				int brojac = 0;
 			      biblioteka.ucitajAdmine();
-			      File temp = new File("fajlovi/tipClanarine.txt");
-			      File existing = new File("fajlovi/tipClan.txt");
+			      File temp = new File("src/fajlovi/tipClanarine.txt");
+			      File existing = new File("src/fajlovi/tipClan.txt");
 			      temp.delete();
 			      try {
 					temp.createNewFile();

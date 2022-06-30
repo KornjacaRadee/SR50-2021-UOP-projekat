@@ -1,5 +1,7 @@
 package knjige;
 
+import javax.swing.table.DefaultTableModel;
+
 public class Knjiga {
 	private String id;
 	private String naslov;
@@ -8,12 +10,13 @@ public class Knjiga {
 	private int godinaIzdavanja;
 	private String jezik;
 	private String opis;
-	private ZanrKnjige zanr;
+	private String zanr;
+	
 	public Knjiga() {
 		super();
 	}
 	public Knjiga(String id, String naslov, String orgNaslov, String pisac, int godinaIzdavanja, String jezik, String opis,
-			ZanrKnjige zanr) {
+			String zanr) {
 		super();
 		this.id = id;
 		this.naslov = naslov;
@@ -66,10 +69,10 @@ public class Knjiga {
 	public void setOpis(String opis) {
 		this.opis = opis;
 	}
-	public ZanrKnjige getZanr() {
+	public String getZanr() {
 		return zanr;
 	}
-	public void setZanr(ZanrKnjige zanr) {
+	public void setZanr(String zanr) {
 		this.zanr = zanr;
 	}
 	

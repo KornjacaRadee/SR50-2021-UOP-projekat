@@ -168,10 +168,11 @@ public class Biblioteka {
 
 	public void ucitajClanove() {
         try {
-            File korisniciFile = new File("fajlovi/clanovi.txt");
+            File korisniciFile = new File("src/fajlovi/clanovi.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
+            	
                 String[] lineSplit = line.split("\\|");
                 String id = lineSplit[0];
                 String ime = lineSplit[1];
@@ -180,22 +181,30 @@ public class Biblioteka {
                 String jmbg = lineSplit[4];
                 Pol pol = Pol.valueOf(lineSplit[5]);
                 String brojClanskeKarte = lineSplit[6];
-                TipClanarine tipClanarine = this.nadjiTip(lineSplit[7]);
+                String tipClanarine = lineSplit[7];
                 LocalDate datumUplate = LocalDate.parse(lineSplit[8]);
                 int brojMeseci = Integer.parseInt(lineSplit[9]);
                 boolean aktivnost = Boolean.parseBoolean(lineSplit[10]);
+    			LocalDate uplata = datumUplate;
+    			LocalDate kraj = uplata.plusDays(brojMeseci*30);
+    			if(kraj.isAfter(LocalDate.now())){
+    				aktivnost = false;
+    			}else {
+    				aktivnost = true;
+    			}
                 
                 
                 Clan clan = new Clan(id,ime, prezime, adresa, jmbg, pol,brojClanskeKarte,tipClanarine,datumUplate,brojMeseci,aktivnost);
                 this.clanovi.add(clan);
             }
+            reader.close();
         } catch (IOException e) {
             System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
         }
     }
 	public void ucitajZanrove() {
         try {
-            File korisniciFile = new File("fajlovi/zanrovi.txt");
+            File korisniciFile = new File("src/fajlovi/zanrovi.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -217,7 +226,7 @@ public class Biblioteka {
 			sadrzaj += zanr.getOznaka() +"|"+ zanr.getOpis() + "\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/"+fajl);
+			File korisniciFile = new File("src/fajlovi/"+fajl);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tip));
 			writer.write(sadrzaj);
 			writer.close();
@@ -229,7 +238,7 @@ public class Biblioteka {
 	
 	public void ucitajAdmine() {
         try {
-            File korisniciFile = new File("fajlovi/admini.txt");
+            File korisniciFile = new File("src/fajlovi/admini.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -253,7 +262,7 @@ public class Biblioteka {
     }
 	public void ucitajBibliotekare() {
         try {
-            File korisniciFile = new File("fajlovi/bibliotekari.txt");
+            File korisniciFile = new File("src/fajlovi/bibliotekari.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -280,7 +289,7 @@ public class Biblioteka {
     }
 	public void ucitajTipClanarine() {
         try {
-            File korisniciFile = new File("fajlovi/tipClan.txt");
+            File korisniciFile = new File("src/fajlovi/tipClan.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -304,7 +313,7 @@ public class Biblioteka {
 			sadrzaj += tip.getId() + "|" + tip.getNaziv() + "|" + tip.getCena()+ "|"+ "\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/"+fajl);
+			File korisniciFile = new File("src/fajlovi/"+fajl);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tipo));
 			writer.write(sadrzaj);
 			writer.close();
@@ -315,7 +324,7 @@ public class Biblioteka {
 	
 	public void ucitajKnjige() {
         try {
-            File korisniciFile = new File("fajlovi/knjige.txt");
+            File korisniciFile = new File("src/fajlovi/knjige.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -327,7 +336,7 @@ public class Biblioteka {
                 int godinaIzdavanja = Integer.parseInt(lineSplit[4]);
                 String jezik = lineSplit[5];
                 String opis = lineSplit[6];
-                ZanrKnjige zanr = this.nadjiZanr(lineSplit[7]);
+                String zanr = lineSplit[7];
                 
                 
                 Knjiga knjiga  = new Knjiga(id,naslov,orgNaslov,pisac,godinaIzdavanja,jezik,opis,zanr);
@@ -368,36 +377,48 @@ public class Biblioteka {
 	
 	public void ucitajPrimerakKnjige() {
         try {
-            File korisniciFile = new File("fajlovi/primerci.txt");
+            File korisniciFile = new File("src/fajlovi/primerci.txt");
             BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] lineSplit = line.split("\\|");
-                Knjiga knjiga = this.nadjiKnjigu(lineSplit[1]);
+                String knjiga = lineSplit[0];
                 int brojStrana = Integer.parseInt(lineSplit[1]);
                 Povez povez = Povez.valueOf(lineSplit[2]);;
                 int godinaStampanja = Integer.parseInt(lineSplit[3]);
                 String jezikStampanja = lineSplit[4];
                 Boolean dostupnost = Boolean.parseBoolean(lineSplit[5]);
+                String id = String.valueOf(lineSplit[6]);
                 
                 
-                Primerak primerak  = new Primerak(knjiga,brojStrana,povez,godinaStampanja,jezikStampanja,dostupnost);
+                Primerak primerak  = new Primerak(knjiga,brojStrana,povez,godinaStampanja,jezikStampanja,dostupnost,id);
                 this.primerak.add(primerak);
+                
+                
             }
+            reader.close();
         } catch (IOException e) {
             System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
         }
     }
 	
-	public void snimiClanove() {
+	public void snimiClanove(String fajl,boolean tip) {
 		String sadrzaj = "";
 		for (Clan clan: this.clanovi) {
+			LocalDate uplata = clan.getDatumUplate();
+			Integer brojMeseci = clan.getBrojMeseci();
+			LocalDate kraj = uplata.plusDays(brojMeseci*30);
+			if(kraj.isAfter(LocalDate.now())){
+				clan.setAktivnost(false);
+			}else {
+				clan.setAktivnost(true);
+			}
 			sadrzaj += clan.getId() + "|" + clan.getIme() + "|" + clan.getPrezime() + "|" + clan.getAdresa() + 
 					"|" + clan.getJMBG() +"|" + clan.getPolovi() + "|" + clan.getBrojClanskeKarte() + "|" + clan.getTip() + "|"+ clan.getDatumUplate() + "|"+ clan.getBrojMeseci() + "|"+ clan.isAktivnost() + "\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/clanovi.txt");
-			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
+			File korisniciFile = new File("src/fajlovi/"+fajl);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tip));
 			writer.write(sadrzaj);
 			writer.close();
 		}catch(IOException e){
@@ -412,7 +433,7 @@ public class Biblioteka {
 					"|" + admin.getJMBG() +"|"+ admin.getPolovi() + "|" + admin.getKorisnickoIme() + "|" + admin.getKorisnickaSifra() + "|"+ admin.getPlata() + "\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/"+fajl);
+			File korisniciFile = new File("src/fajlovi/"+fajl);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tip));
 			writer.write(sadrzaj);
 			writer.close();
@@ -428,7 +449,7 @@ public class Biblioteka {
 					"|" + bibliotekar.getJMBG()+ "|"+ bibliotekar.getPolovi() + "|" + bibliotekar.getKorisnickoIme() + "|" + bibliotekar.getKorisnickaSifra() + "|"+ bibliotekar.getPlata() + "\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/"+fajl);
+			File korisniciFile = new File("src/fajlovi/"+fajl);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tip));
 			writer.write(sadrzaj);
 			writer.close();
@@ -436,28 +457,28 @@ public class Biblioteka {
 			System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
 		}
 	}
-	public void snimiKnjige() {
+	public void snimiKnjige(String fajl,boolean tip) {
 		String sadrzaj = "";
 		for (Knjiga knjiga: this.knjiga) {
 			sadrzaj += knjiga.getId() + "|" + knjiga.getNaslov() + "|"+ knjiga.getOrgNaslov() + "|"+ knjiga.getPisac() + "|"+ knjiga.getGodinaIzdavanja() + "|"+ knjiga.getJezik() + "|"+ knjiga.getOpis() + "|"+ knjiga.getZanr()  + "\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/knjige.txt");
-			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
+			File korisniciFile = new File("src/fajlovi/"+fajl);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tip));
 			writer.write(sadrzaj);
 			writer.close();
 		}catch(IOException e){
 			System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
 		}
 	}
-	public void snimiPrimerke() {
+	public void snimiPrimerke(String fajl,boolean tip) {
 		String sadrzaj = "";
 		for (Primerak primerak: this.primerak) {
-			sadrzaj += primerak.getKnjiga() + "|" + primerak.getBrojStrana() + "|"+ primerak.getPovez() + "|"+ primerak.getGodinaStampanja() + "|"+ primerak.getJezikStampanja() + "|"+ primerak.isDostupnost()  + "\n";
+			sadrzaj += primerak.getKnjiga() + "|" + primerak.getBrojStrana() + "|"+ primerak.getPovez() + "|"+ primerak.getGodinaStampanja() + "|"+ primerak.getJezikStampanja() + "|"+ primerak.isDostupnost()  + "|" + primerak.getId() +"\n";
 		}
 		try {
-			File korisniciFile = new File("fajlovi/primerci.txt");
-			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile));
+			File korisniciFile = new File("src/fajlovi/"+fajl);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,tip));
 			writer.write(sadrzaj);
 			writer.close();
 		}catch(IOException e){

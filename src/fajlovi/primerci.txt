@@ -1,1 +1,4 @@
-knjige.Knjiga@4361bd48|30|MEK|1389|Spanski|true
+dasdasdasda|312|TVRD|1234|dsdasda|false|1
+dasdasdasda|312|TVRD|1234|dsdasda|false|2
+dasdas|312|MEK|1234|dsdasda|false|3
+dasdas|312|TVRD|1234|dsdasda|false|4

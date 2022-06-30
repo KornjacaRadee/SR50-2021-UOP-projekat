@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Clan extends Osoba{
 	private String brojClanskeKarte;
-	private TipClanarine tip;
+	private String tip;
 	private LocalDate datumUplate;
 	private int brojMeseci;
 	private boolean aktivnost;
@@ -12,7 +12,7 @@ public class Clan extends Osoba{
 		super();
 	}
 	public Clan(String id, String ime, String prezime, String adresa, String jMBG, Pol polovi, String brojClanskeKarte,
-			TipClanarine tip, LocalDate datumUplate, int brojMeseci, boolean aktivnost) {
+			String tip, LocalDate datumUplate, int brojMeseci, boolean aktivnost) {
 		super(id, ime, prezime, adresa, jMBG, polovi);
 		this.brojClanskeKarte = brojClanskeKarte;
 		this.tip = tip;
@@ -26,10 +26,10 @@ public class Clan extends Osoba{
 	public void setBrojClanskeKarte(String brojClanskeKarte) {
 		this.brojClanskeKarte = brojClanskeKarte;
 	}
-	public TipClanarine getTip() {
+	public String getTip() {
 		return tip;
 	}
-	public void setTip(TipClanarine tip) {
+	public void setTip(String tip) {
 		this.tip = tip;
 	}
 	public LocalDate getDatumUplate() {
