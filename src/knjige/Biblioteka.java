@@ -27,6 +27,7 @@ public class Biblioteka {
 	private ArrayList<Primerak> primerak;
 	private ArrayList<Knjiga> knjiga;
 	private ArrayList<ZanrKnjige> zanrovi;
+	private ArrayList<Iznajmljivanje> iznajmljivanje;
 	public Biblioteka() {
         super();
         this.admini = new ArrayList<Admin>();
@@ -36,12 +37,13 @@ public class Biblioteka {
         this.knjiga = new ArrayList<Knjiga>();
         this.primerak = new ArrayList<Primerak>();
         this.zanrovi = new ArrayList<ZanrKnjige>();
+        this.iznajmljivanje = new ArrayList<Iznajmljivanje>();
     }
 
 
 	public Biblioteka(String naziv, String adresa, String brojTelefona, String vremeRada, ArrayList<Clan> clanovi,
 			ArrayList<Bibliotekar> bibliotekari, ArrayList<Admin> admini, ArrayList<TipClanarine> tipClanarine,
-			ArrayList<Primerak> primerak, ArrayList<Knjiga> knjiga) {
+			ArrayList<Primerak> primerak, ArrayList<Knjiga> knjiga, ArrayList<Iznajmljivanje> iznajmljivanje) {
 		super();
 		this.naziv = naziv;
 		this.adresa = adresa;
@@ -53,6 +55,7 @@ public class Biblioteka {
 		this.tipClanarine = tipClanarine;
 		this.primerak = primerak;
 		this.knjiga = knjiga;
+		this.iznajmljivanje = iznajmljivanje;
 	}
 
 
@@ -163,6 +166,16 @@ public class Biblioteka {
 
 	public void setZanrovi(ArrayList<ZanrKnjige> zanrovi) {
 		this.zanrovi = zanrovi;
+	}
+
+
+	public ArrayList<Iznajmljivanje> getIznajmljivanje() {
+		return iznajmljivanje;
+	}
+
+
+	public void setIznajmljivanje(ArrayList<Iznajmljivanje> iznajmljivanje) {
+		this.iznajmljivanje = iznajmljivanje;
 	}
 
 
@@ -485,6 +498,33 @@ public class Biblioteka {
 			System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
 		}
 	}
+	public void ucitajIznajmljeno() {
+        try {
+            File korisniciFile = new File("src/fajlovi/iznajmljeno.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(korisniciFile));
+            String line;
+            System.out.println("sss");
+            while ((line = reader.readLine()) != null) {
+                String[] lineSplit = line.split("\\|");
+                String zaposleni = lineSplit[0];
+                String clan = lineSplit[1];
+                LocalDate datumIznajmljivanja =LocalDate.parse(lineSplit[3]);
+                LocalDate datumVracanja =LocalDate.parse(lineSplit[3]);
+                String primerak =lineSplit[4];
+                String naslovKnjige = lineSplit[5];
+                
+                
+                
+                Iznajmljivanje knjiga  = new Iznajmljivanje(zaposleni,clan,datumIznajmljivanja,datumVracanja,primerak,naslovKnjige);
+                this.iznajmljivanje.add(knjiga);
+                System.out.println(zaposleni);
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("Greska prilikom ucitavanja datoteke: " + e.getMessage());
+        }
+    }
+
 	
 	
 	

@@ -1,23 +1,24 @@
-//
-//import java.time.LocalDate;
-//import java.util.ArrayList;
-//
-//import knjige.Biblioteka;
-//import knjige.Knjiga;
-//import knjige.Povez;
-//import knjige.Primerak;
-//import knjige.ZanrKnjige;
-//import ljudi.Admin;
-//import ljudi.Bibliotekar;
-//import ljudi.Clan;
-//import ljudi.Pol;
-//import ljudi.TipClanarine;
-//
-//
-//public class Main {
-//
-//    public static void main(String[] args) {
-//        Biblioteka biblioteka = new Biblioteka();
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import knjige.Biblioteka;
+import knjige.Iznajmljivanje;
+import knjige.Knjiga;
+import knjige.Povez;
+import knjige.Primerak;
+import knjige.ZanrKnjige;
+import ljudi.Admin;
+import ljudi.Bibliotekar;
+import ljudi.Clan;
+import ljudi.Pol;
+import ljudi.TipClanarine;
+
+
+public class Main {
+
+    public static void main(String[] args) {
+        Biblioteka biblioteka = new Biblioteka();
 //        Boolean boolTry = new Boolean(true);
 //        
 //        // pravljenje i zapisivanje testiranje
@@ -44,9 +45,12 @@
 //       // admini.add(admin);
 //      //  biblioteka.setAdmini(admini);
 //       // biblioteka.snimiAdmine("admini.txt",true);
-//        
-//     
-//        
+
+			biblioteka.ucitajIznajmljeno();
+//			for(Iznajmljivanje clan1 : biblioteka.getIznajmljivanje()) {
+//            System.out.println(clan1.getClan());
+//
+//        }
 ////        ZanrKnjige zanr2 = new ZanrKnjige("HOROR","STRASNO");
 ////        ArrayList<ZanrKnjige> zanrovi = new ArrayList<ZanrKnjige>();
 ////        zanrovi.add(zanr2);
@@ -127,6 +131,6 @@
 //     
 //
 //
-//    }
-//    
-//}
+    }
+    
+}

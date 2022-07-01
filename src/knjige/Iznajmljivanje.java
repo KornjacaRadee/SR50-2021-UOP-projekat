@@ -1,14 +1,16 @@
 package knjige;
 
+import java.time.LocalDate;
+
 import ljudi.Clan;
 import ljudi.Zaposleni;
 
 public class Iznajmljivanje {
-	private Zaposleni zaposleni;
-	private Clan clan;
-	private String datumIznajmljivanja;
-	private String datumVracanja;
-	private Primerak primerak;
+	private String zaposleni;
+	private String clan;
+	private LocalDate datumIznajmljivanja;
+	private LocalDate datumVracanja;
+	private String primerakk;
 	private String naslovKnjige;
 	
 	
@@ -17,65 +19,65 @@ public class Iznajmljivanje {
 	}
 
 
-	public Iznajmljivanje(Zaposleni zaposleni, Clan clan, String datumIznajmljivanja, String datumVracanja,
-			Primerak primerak, String naslovKnjige) {
+	public Iznajmljivanje(String zaposleni, String clan, LocalDate datumIznajmljivanja, LocalDate datumVracanja,
+			 String naslovKnjige, String primerakk) {
 		super();
 		this.zaposleni = zaposleni;
 		this.clan = clan;
 		this.datumIznajmljivanja = datumIznajmljivanja;
 		this.datumVracanja = datumVracanja;
-		this.primerak = primerak;
+		this.primerakk = primerakk;
 		this.naslovKnjige = naslovKnjige;
 	}
 
 
-	public Zaposleni getZaposleni() {
+	public String getZaposleni() {
 		return zaposleni;
 	}
 
 
-	public void setZaposleni(Zaposleni zaposleni) {
+	public void setZaposleni(String zaposleni) {
 		this.zaposleni = zaposleni;
 	}
 
 
-	public Clan getClan() {
+	public String getClan() {
 		return clan;
 	}
 
 
-	public void setClan(Clan clan) {
+	public void setClan(String clan) {
 		this.clan = clan;
 	}
 
 
-	public String getDatumIznajmljivanja() {
+	public LocalDate getDatumIznajmljivanja() {
 		return datumIznajmljivanja;
 	}
 
 
-	public void setDatumIznajmljivanja(String datumIznajmljivanja) {
+	public void setDatumIznajmljivanja(LocalDate datumIznajmljivanja) {
 		this.datumIznajmljivanja = datumIznajmljivanja;
 	}
 
 
-	public String getDatumVracanja() {
+	public LocalDate getDatumVracanja() {
 		return datumVracanja;
 	}
 
 
-	public void setDatumVracanja(String datumVracanja) {
+	public void setDatumVracanja(LocalDate datumVracanja) {
 		this.datumVracanja = datumVracanja;
 	}
 
 
-	public Primerak getPrimerak() {
-		return primerak;
+	public String getPrimerakk() {
+		return primerakk;
 	}
 
 
-	public void setPrimerak(Primerak primerak) {
-		this.primerak = primerak;
+	public void setPrimerakk(String primerakk) {
+		this.primerakk = primerakk;
 	}
 
 
@@ -87,5 +89,14 @@ public class Iznajmljivanje {
 	public void setNaslovKnjige(String naslovKnjige) {
 		this.naslovKnjige = naslovKnjige;
 	}
+
+
+	
+
+
+
+
+
+	
 	
 }
