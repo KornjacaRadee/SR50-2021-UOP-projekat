@@ -506,9 +506,10 @@ public class Biblioteka {
             System.out.println("sss");
             while ((line = reader.readLine()) != null) {
                 String[] lineSplit = line.split("\\|");
+                System.out.println(lineSplit[2]);
                 String zaposleni = lineSplit[0];
                 String clan = lineSplit[1];
-                LocalDate datumIznajmljivanja =LocalDate.parse(lineSplit[3]);
+                LocalDate datumIznajmljivanja =LocalDate.parse(lineSplit[2]);
                 LocalDate datumVracanja =LocalDate.parse(lineSplit[3]);
                 String primerak =lineSplit[4];
                 String naslovKnjige = lineSplit[5];
@@ -517,7 +518,6 @@ public class Biblioteka {
                 
                 Iznajmljivanje knjiga  = new Iznajmljivanje(zaposleni,clan,datumIznajmljivanja,datumVracanja,primerak,naslovKnjige);
                 this.iznajmljivanje.add(knjiga);
-                System.out.println(zaposleni);
             }
             reader.close();
         } catch (IOException e) {

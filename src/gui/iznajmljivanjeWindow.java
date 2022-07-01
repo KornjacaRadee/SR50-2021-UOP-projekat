@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class iznajmljivanjeWindow extends JFrame {
 
@@ -130,7 +131,7 @@ public class iznajmljivanjeWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String sadrzaj = "";
 				String zaposleni1 = zaposleni.getText();
-				String clan1 = clan.getName();
+				String clan1 = clan.getText();
 				LocalDate datumIznajmljivanja1 = LocalDate.parse(datumIznajmljivanja.getText());
 				LocalDate datumVracanja1 = LocalDate.parse(datumVracanja.getText());
 				Integer redovi = iznajmiti.getRowCount();
@@ -288,6 +289,43 @@ public class iznajmljivanjeWindow extends JFrame {
 		JButton vrati = new JButton("Vrati knjigu");
 		vrati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int i = iznajmljeno.getSelectedRow();
+				modeloo.removeRow(i);
+				int brojac = 0;
+			      biblioteka.ucitajAdmine();
+			      File temp = new File("src/fajlovi/iznajmljeno1.txt");
+			      File existing = new File("src/fajlovi/iznajmljeno.txt");
+			      temp.delete();
+			      try {
+					temp.createNewFile();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			        for(Iznajmljivanje admin1 : biblioteka.getIznajmljivanje()) {
+			        	if(admin1 == null) {
+			        		break;
+			        	}
+			        	
+			        	else if(brojac != i) {
+			        		String sadrzaj = "";
+							sadrzaj = admin1.getZaposleni() + "|" + admin1.getClan() + "|" + admin1.getDatumIznajmljivanja() + "|" + admin1.getDatumVracanja()  + "|"+  admin1.getNaslovKnjige()  + "|" + admin1.getPrimerakk() + "\n";
+							try {
+								File korisniciFile = new File("src/fajlovi/iznajmljeno1.txt");
+								BufferedWriter writer = new BufferedWriter(new FileWriter(korisniciFile,true));
+								writer.write(sadrzaj);
+								writer.close();
+							}catch(IOException e1){
+								System.out.println("Greska prilikom ucitavanja datoteke: " + e1.getMessage());
+							}
+			                brojac += 1;
+			            } else {
+						};
+			            
+		               
+			        }
+			       System.out.println(existing.delete());
+			           
+		           temp.renameTo(existing);
 				
 				
 			}

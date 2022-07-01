@@ -174,8 +174,12 @@ public class Mainwindow extends JFrame {
 			}
 		});
 		login.setBackground(new Color(204, 255, 153));
-		login.setBounds(635, 499, 110, 37);
+		login.setBounds(658, 517, 110, 37);
 		panel.add(login);
+		
+		JButton biblioo = new JButton("BIBLIOTEKA");
+		biblioo.setBounds(583, 414, 126, 76);
+		panel.add(biblioo);
 
 		
 
